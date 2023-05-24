@@ -1,0 +1,23 @@
+footer {
+  color: #797462;
+}
+
+.containers1 {
+  background: rgb(29 29 29);
+  padding: 5% 5% 0;
+}
+
+.social-media-icons {
+  padding: 0 0 10px 0 !important;
+}
+
+.social-media-icons li {
+  list-style: none;
+}
+
+.social-media-icons li a {
+  color: #797462;
+  font-size: 130%;
+  text-decoration: none;
+}
+

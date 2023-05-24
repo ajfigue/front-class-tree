@@ -1,0 +1,12 @@
+<header class="header">
+  <a href="#" class="logo">{{title}}</a>
+
+  <nav class="navbar">
+    <a href="#" class="active bi bi-house-fill"> Inicio</a>
+    <a href="#acerca_de" class="bi bi-info-circle-fill"> Acerca</a>
+    <a href="#servicios_id" class="bi bi-shop"> Servicios</a>
+    <a href="#contactanos_id" class="bi bi-phone-fill"> Contactanos</a>
+    <a routerLink="/login" class="active bi bi-person-badge-fill" *ngIf="!userLogin"> Inicia Sesión</a>
+    <a routerLink="/home" class="active bi bi-person-badge-fill" *ngIf="userLogin"> Cerrar Sesión</a>
+  </nav>
+</header>

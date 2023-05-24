@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input {
+  padding-left: 5px;
+  font-weight: 500;
+}
+
+.containerr {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-login {
+  width: 55em;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 50px rgb(0 0 0 / 30%);
+  border-radius: 10px;
+}
+
+.box-login .icons-login {
+  overflow: hidden;
+  position: relative;
+  min-width: 56%;
+  height: 35em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 0 0 10px;
+}
+
+.box-login .icons-login img {
+  width: 235%;
+  position: absolute;
+  transition: all 850ms cubic-bezier(0.29, 1.185, 1, 1);
+}
+
+.box-login .cuadro-login {
+  background: rgb(255 255 255);
+  border-radius: 0 10px 10px 0;
+  padding: 20px;
+}
+
+.cuadro-inciarSesion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.cuadro-inciarSesion.desactive {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.cuadro-registrarse.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  visibility: visible;
+  opacity: 1;
+}
+
+.contenedor-text-login {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-login {
+  font-size: 32px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: -2px;
+  background-image: linear-gradient(135deg, #694545 30%, #ffe1aa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.input-group-text-mod {
+  line-height: 0 !important;
+  color: #442020;
+  background: #795858;
+  font-size: 22px;
+  padding: 10px;
+}
+
+div.cuadro-login .form-control {
+  font-size: 18px;
+}
+
+div.cuadro-login .form-control:focus {
+  border-color: #442020;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(54 63 57 / 25%);
+}
+
+.box-login:hover .icons-login img {
+  width: 245%;
+  transition: all 800ms cubic-bezier(0.29, 1.185, 1, 1);
+}
+
+.btn-global {
+  color: #c7a785;
+  border-color: #c7a785;
+}
+
+.btn-global:hover {
+  color: #c7a785 !important;
+  background-color: #725353;
+  border-color: #694545;
+}
+
+.btn-incioS {
+  width: 80%;
+  border-radius: 12px;
+  padding: 7px 0;
+}
+
+.text-registrar {
+  font-size: 19px;
+  text-align: center;
+  color: #795858;
+  margin: 0 !important;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+.btn-registrar {
+  line-height: 0;
+  border-radius: 12px;
+  padding: 7px;
+  color: #907373;
+  border-color: #694545;
+}
+
+.btn-registrar:hover {
+  background-color: #2c2b2c;
+  color: #a8a7a7;
+}
+
+.cuadro-registrarse {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.UserPass-incorrect {
+  color: #6b4447;
+  font-weight: bold;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.UserPass-incorrect.active {
+  display: unset;
+  visibility: visible;
+  opacity: 1;
+}
+
+.Confirmar-contraseña {
+  color: #6b4447;
+  font-weight: bold;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.Confirmar-contraseña.active {
+  display: unset;
+  visibility: visible;
+  opacity: 1;
+}
+
+.Reg-Nombre-Usuario {
+  color: #6b4447;
+  font-weight: bold;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.Reg-Nombre-Usuario.active {
+  display: unset;
+  visibility: visible;
+  opacity: 1;
+}
+
+.Reg-nueva-contraseña {
+  color: #6b4447;
+  font-weight: bold;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.Reg-nueva-contraseña.active {
+  display: unset;
+  visibility: visible;
+  opacity: 1;
+}
+
+.Reg-Cnueva-contraseña {
+  color: #6b4447;
+  font-weight: bold;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.Reg-Cnueva-contraseña.active {
+  display: unset;
+  visibility: visible;
+  opacity: 1;
+}
