@@ -3,9 +3,13 @@
   <div class="container">
     <form [formGroup]="fileForm">
       <div class="mb-3">
-        <label for="formFile" class="form-label">Cargue archivo .csv</label
-        >
-        <input class="form-control" type="file" id="formFile" (change)="onFileSelected($event)" />
+        <label for="formFile" class="form-label">Cargue archivo .csv</label>
+        <input
+          class="form-control"
+          type="file"
+          id="formFile"
+          (change)="onFileSelected($event)"
+        />
       </div>
     </form>
     <div>
@@ -14,23 +18,37 @@
         <button >Enviar</button>
       </form> -->
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
+    <div class="row">
+      <div *ngFor="let data of datas" style="width: fit-content">
+        <div class="col-lg-4">
+          <p>Id: {{ data.id }}</p>
+          <p>Email: {{ data.user_email }}</p>
+          <p>Subject: {{ data.subject }}</p>
+          <p>Message: {{ data.msg }}</p>
+          <p>State: {{ data.state }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">User Email</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Message</th>
+            <th scope="col">state</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let data of datas">
+          <tr>
+            <th scope="row">{{ data.id }}</th>
+            <td>{{ data.user_email }}</td>
+            <td>{{ data.subject }}</td>
+            <td>{{ data.msg }}</td>
+            <td>{{ data.state }}</td>
+          </tr>
+          <!-- <tr>
           <th scope="row">2</th>
           <td>Jacob</td>
           <td>Thornton</td>
@@ -40,9 +58,10 @@
           <th scope="row">3</th>
           <td colspan="2">Larry the Bird</td>
           <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
+        </tr> -->
+        </tbody>
+      </table>
+    </div>
     <button class="btn btn-primary" (click)="onUpload()">descargar pdf</button>
   </div>
 </div>

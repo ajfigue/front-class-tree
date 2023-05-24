@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { FormGroup, FormBuilder } from "@angular/forms";
+import { ListContactService } from "src/app/servicio/list-contact.service";
+import Swal from "sweetalert2";
 
 
 
@@ -17,14 +19,26 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 
 })
 
-export class CalidadVinoComponent {
+export class CalidadVinoComponent implements OnInit {
 
   fileForm: FormGroup;
+  datas = [];
+
+  ngOnInit(): void {
+    this.listContact.listContact().subscribe({
+      next: (userData) => {
+        this.datas = userData.data;
+      },
+      error: (errorData) => {
+        Swal.fire({ icon: 'error', title: 'Oops...', text: errorData.error.message })
+        return;
+      }
+    });
+    //this.logout.logout();
+  }
 
 
-
-
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private listContact: ListContactService) {
 
     this.fileForm = this.formBuilder.group({
 
@@ -35,8 +49,6 @@ export class CalidadVinoComponent {
   }
 
 
-
-
   onFileSelected(event) {
 
     const file = event.target.files[0];
@@ -45,27 +57,16 @@ export class CalidadVinoComponent {
 
   }
 
-
-
-
   onUpload() {
-
     const formData = new FormData();
-
     formData.append("file", this.fileForm.get("file").value);
+    this.http.post("http://127.0.0.1:5000/generate_pdf", formData, {
 
+      responseType: "blob", // Indicar que la respuesta es un archivo Blob
 
+      headers: new HttpHeaders().append("Content-Disposition", "attachment"),
 
-
-    this.http
-
-      .post("http://127.0.0.1:5000/generate_pdf", formData, {
-
-        responseType: "blob", // Indicar que la respuesta es un archivo Blob
-
-        headers: new HttpHeaders().append("Content-Disposition", "attachment"),
-
-      })
+    })
 
       .subscribe(
 
