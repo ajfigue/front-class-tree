@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LogoutService } from 'src/app/servicio/logout.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-header-admin',
@@ -8,14 +9,15 @@ import { LogoutService } from 'src/app/servicio/logout.service';
 })
 export class HeaderAdminComponent {
   title = "WineCMP"
-  router: any;
 
-  constructor(private logout: LogoutService) { }
+  constructor(private logout: LogoutService, private router: Router) { }
 
   logOut() {
-      this.logout.logout().subscribe((res: any) => {
+    this.logout.logout().subscribe((res: any) => {
       console.log(res);
-      });
+      this.logout.removeToken();
+      this.router.navigate(['/']);
+    });
     //this.logout.logout();
   }
 }

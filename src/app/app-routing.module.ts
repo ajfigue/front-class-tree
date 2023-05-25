@@ -5,13 +5,15 @@ import { LoginComponent } from './login/login.component';
 import { HipotenusaComponent } from './redneuronal/hipotenusa/hipotenusa.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { CalidadVinoComponent } from './vinos/calidad-vino/calidad-vino.component';
+import { AuthGuard } from './guards/auth.guard';
+import { IfLoginGuard } from './guards/if-login.guard';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'hipotenusa', component: HipotenusaComponent },
-  {path: 'logAdmin', component: AdminComponent},
-  {path: 'vinoCalidad', component: CalidadVinoComponent},
+  { path: 'login', component: LoginComponent, canActivate: [IfLoginGuard] },
+  { path: 'hipotenusa', component: HipotenusaComponent, canActivate: [AuthGuard] },
+  { path: 'logAdmin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'vinoCalidad', component: CalidadVinoComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

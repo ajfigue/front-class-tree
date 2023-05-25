@@ -56,20 +56,24 @@ input {
   height: 100%;
 }
 
-.cuadro-inciarSesion.desactive {
+.Formcuadro-inciarSesion.desactive {
   display: none;
   visibility: hidden;
   opacity: 0;
 }
 
-.cuadro-registrarse.active {
+.formCuadro-registrarse.active {
+  display: initial;
+  visibility: visible;
+  opacity: 1;
+}
+
+.cuadro-registrarse {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  visibility: visible;
-  opacity: 1;
 }
 
 .contenedor-text-login {
@@ -152,7 +156,7 @@ div.cuadro-login .form-control:focus {
   color: #a8a7a7;
 }
 
-.cuadro-registrarse {
+.formCuadro-registrarse {
   display: none;
   visibility: hidden;
   opacity: 0;
@@ -174,6 +178,7 @@ div.cuadro-login .form-control:focus {
 
 .Confirmar-contraseña {
   color: #6b4447;
+  font-size: 0.85em;
   font-weight: bold;
   display: none;
   visibility: hidden;

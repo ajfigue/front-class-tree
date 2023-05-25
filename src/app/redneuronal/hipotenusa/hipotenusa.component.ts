@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./hipotenusa.component.css']
 })
 export class HipotenusaComponent {
-
+  divVisible = false;
   resultado: string = "";
   urlImg: string = "";
 
@@ -38,6 +38,7 @@ export class HipotenusaComponent {
       this.hipotenusas.hipotenusa(data).subscribe({
         next: (userData) => {
           console.log(userData);
+          this.divVisible = !this.divVisible;
           this.resultado = 'La hipotenusa es ' + userData.data.toString();
           this.urlImg = userData.img.toString();
         },

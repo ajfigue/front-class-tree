@@ -11,5 +11,9 @@ export class ListContactService {
 
   listContact(): Observable<any> {
     return this.http.get(`${this.api}/list_contact`);
-    }
+  }
+
+  listContactForId(id: any): Observable<any> {
+    return this.http.get(`${this.api}/list_contact/for_id/${id}`)
+  }
 }

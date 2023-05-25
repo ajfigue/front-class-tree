@@ -5,15 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactService {
+export class RegUserService {
   api: string = 'http://127.0.0.1:5000';
+
   constructor(private http: HttpClient) { }
 
-  sendMail(data: any): Observable<any> {
-    return this.http.post<any>(`${this.api}/send_email`, data);
+  createUser(data: any): Observable<any> {
+    return this.http.post<any>(`${this.api}/create_user`, data);
   }
-
-  updateMails(id: any): Observable<any> {
-    return this.http.get(`${this.api}/update_status/${id}`);
-    }
 }

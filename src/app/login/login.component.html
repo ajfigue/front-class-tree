@@ -6,11 +6,13 @@
         <p>a</p>
       </div>
       <div class="cuadro-login">
-        <form [formGroup]="loginForm" [ngClass]="{ desactive: CuadroInicioSesion }" style="height: 100%">
-          <div
-            id="cuadro_inciarSesion"
-            class="cuadro-inciarSesion"
-          >
+        <form
+          [formGroup]="loginForm"
+          class="Formcuadro-inciarSesion"
+          [ngClass]="{ desactive: Formcuadro_inciarSesion }"
+          style="height: 100%"
+        >
+          <div id="cuadro_inciarSesion" class="cuadro-inciarSesion">
             <div>
               <div class="contenedor-text-login">
                 <i class="bi bi-person-circle text-login"></i>
@@ -99,110 +101,146 @@
             </div>
           </div>
         </form>
-        <div
-          id="cuadro_registrarse"
-          [ngClass]="{ active: cuadroRegistrarse }"
-          class="cuadro-registrarse"
+        <form
+          [formGroup]="regForm"
+          class="formCuadro-registrarse"
+          [ngClass]="{ active: FormcuadroRegistrarse }"
+          style="height: 100%"
         >
-          <div>
-            <div class="contenedor-text-login">
-              <i class="bi bi-person-fill-add text-login"></i>
-              <h2 class="text-login mb-5">Registrar nuevo usuario</h2>
+          <div id="cuadro_registrarse" class="cuadro-registrarse">
+            <div>
+              <div class="contenedor-text-login">
+                <i class="bi bi-person-fill-add text-login"></i>
+                <h2 class="text-login mb-5">Registrar nuevo usuario</h2>
+              </div>
+              <div style="width: 100%">
+                <div class="mb-3">
+                  <div class="input-group">
+                    <span
+                      class="input-group-text input-group-text-mod bi bi-person-badge-fill"
+                    ></span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nuevo_usuario"
+                      placeholder="E-mail"
+                      (input)="newUsername($event)"
+                      formControlName="emailreg"
+                    />
+                  </div>
+                  <div
+                    *ngIf="
+                    emailreg.invalid &&
+                      (emailreg.dirty || emailreg.touched)
+                    "
+                    class="text-danger mb-3"
+                  >
+                    <div *ngIf="emailreg.errors?.['required']">
+                      Por favor, ingrese su Email.
+                    </div>
+                    <div *ngIf="emailreg.errors?.['email']">
+                      Por favor, ingrese email valido.
+                    </div>
+                  </div>
+                  <span
+                    class="Reg-Nombre-Usuario"
+                    id="Reg_Nombre_Usuario"
+                    [ngClass]="{ active: Reg_Nombre_Usuario }"
+                    ><i class="bi bi-exclamation-circle-fill"></i> Por favor,
+                    ingrese un nombre de usuario</span
+                  >
+                </div>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <span
+                      class="input-group-text input-group-text-mod bi bi-file-lock-fill"
+                    ></span>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="nueva_contraseña"
+                      placeholder="Password"
+                      (input)="newPassword($event)"
+                      formControlName="passwordsreg"
+                    />
+                  </div>
+                  <div
+                    *ngIf="
+                    passwordsreg.invalid &&
+                      (passwordsreg.dirty || passwordsreg.touched)
+                    "
+                    class="text-danger mb-3"
+                  >
+                    <div *ngIf="passwordsreg.errors?.['required']">
+                      Por favor, ingrese una contraseña.
+                    </div>
+                  </div>
+                  <span class="Reg-nueva-contraseña" id="Reg_nueva_contraseña"
+                    ><i class="bi bi-exclamation-circle-fill"></i> Por favor,
+                    ingrese una contraseña</span
+                  >
+                </div>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <span
+                      class="input-group-text input-group-text-mod bi bi-file-lock-fill"
+                    ></span>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="repetir_nueva_contraseña"
+                      placeholder="Confirm Password"
+                      (input)="newPasswordConfirm($event)"
+                      formControlName="passwordsregConfirm"
+                    />
+                  </div>
+                  <div
+                    *ngIf="
+                    passwordsregConfirm.invalid &&
+                      (passwordsregConfirm.dirty || passwordsregConfirm.touched)
+                    "
+                    class="text-danger mb-3"
+                  >
+                    <div *ngIf="passwordsregConfirm.errors?.['required']">
+                      Por favor, ingrese confirme contraseña.
+                    </div>
+                  </div>
+                  <span class="Reg-Cnueva-contraseña" id="Reg_Cnueva_contraseña"
+                    ><i class="bi bi-exclamation-circle-fill"></i> Por favor,
+                    confirme la contraseña</span
+                  >
+                </div>
+                <span
+                  class="Confirmar-contraseña"
+                  id="Confirmar_contraseña"
+                  [ngClass]="{ active: Confirmar_samePass }"
+                  ><i class="bi bi-exclamation-circle-fill"></i>
+                  Por favor, confirme que la contraseña coincida con la
+                  confirmación de contraseña.
+                </span>
+              </div>
             </div>
-            <div style="width: 100%">
-              <div class="mb-3">
-                <div class="input-group">
-                  <span
-                    class="input-group-text input-group-text-mod bi bi-person-badge-fill"
-                  ></span>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="nuevo_usuario"
-                    placeholder="Username"
-                    (input)="newUsername($event)"
-                  />
-                </div>
-                <span
-                  class="Reg-Nombre-Usuario"
-                  id="Reg_Nombre_Usuario"
-                  [ngClass]="{ active: Reg_Nombre_Usuario }"
-                  ><i class="bi bi-exclamation-circle-fill"></i> Por favor,
-                  ingrese un nombre de usuario</span
-                >
-              </div>
-              <div class="mb-3">
-                <div class="input-group">
-                  <span
-                    class="input-group-text input-group-text-mod bi bi-file-lock-fill"
-                  ></span>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="nueva_contraseña"
-                    placeholder="Password"
-                    (input)="newPassword($event)"
-                  />
-                </div>
-                <span
-                  class="Reg-nueva-contraseña"
-                  id="Reg_nueva_contraseña"
-                  [ngClass]="{ active: Reg_nueva_pass }"
-                  ><i class="bi bi-exclamation-circle-fill"></i> Por favor,
-                  ingrese una contraseña</span
-                >
-              </div>
-              <div class="mb-3">
-                <div class="input-group">
-                  <span
-                    class="input-group-text input-group-text-mod bi bi-file-lock-fill"
-                  ></span>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="repetir_nueva_contraseña"
-                    placeholder="Confirm Password"
-                    (input)="newPasswordConfirm($event)"
-                  />
-                </div>
-                <span
-                  class="Reg-Cnueva-contraseña"
-                  id="Reg_Cnueva_contraseña"
-                  [ngClass]="{ active: Reg_Cnueva_pass }"
-                  ><i class="bi bi-exclamation-circle-fill"></i> Por favor,
-                  confirme la contraseña</span
-                >
-              </div>
-              <span
-                class="Confirmar-contraseña"
-                id="Confirmar_contraseña"
-                [ngClass]="{ active: Confirmar_samePass }"
-                ><i class="bi bi-exclamation-circle-fill"></i>
-                Por favor, confirme que la contraseña coincida con la
-                confirmación de contraseña.
-              </span>
-            </div>
-          </div>
-          <div style="text-align: center">
-            <button
-              type="button"
-              (click)="registrarCuenta()"
-              class="btn btn-outline-secondary mb-3 btn-global btn-incioS"
-            >
-              <i class="bi bi-person-fill-add"></i> Crear cuenta
-            </button>
+            <div style="text-align: center">
+              <button
+                type="button"
+                (click)="registrer()"
+                class="btn btn-outline-secondary mb-3 btn-global btn-incioS"
+              >
+                <i class="bi bi-person-fill-add"></i> Crear cuenta
+              </button>
 
-            <button
-              style="padding: 10px 2em"
-              type="button"
-              (click)="registrarOff()"
-              class="btn-registrar btn btn-outline-secondary"
-            >
-              <i class="bi bi-person-circle"></i> Ya tengo cuenta, Iniciar
-              Sesión
-            </button>
+              <button
+                style="padding: 10px 2em"
+                type="button"
+                (click)="registrarOff()"
+                class="btn-registrar btn btn-outline-secondary"
+              >
+                <i class="bi bi-person-circle"></i> Ya tengo cuenta, Iniciar
+                Sesión
+              </button>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
