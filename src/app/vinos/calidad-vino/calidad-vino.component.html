@@ -1,181 +1,119 @@
 <app-header-admin></app-header-admin>
+<div style="padding: 0 10px">
+  <div class="contenedor-img">
+    <h2><i class="bi bi-bag-check-fill"></i> Vino Calidad</h2>
+  </div>
+</div>
 <div class="containerAll">
   <div class="container">
-    <form [formGroup]="fileForm">
-      <div class="mb-3">
-        <label for="formFile" class="form-label">Cargue archivo .csv</label>
-        <input
-          class="form-control"
-          type="file"
-          id="formFile"
-          (change)="onFileSelected($event)"
-        />
-      </div>
-    </form>
-    <div>
-      <!-- <form [formGroup]="fileForm">
-        <input type="file" (change)="onFileSelected($event)" />
-        <button >Enviar</button>
-      </form> -->
-      <div class="row">
-        <div class="col-lg-12 col-actualizar">
-          <p (click)="list_contact()">Actualizar <i class="bi bi-arrow-repeat"></i></p>
-        </div>
+    <div class="row mb-4">
+      <div class="col-lg-12">
+        <p class="descripcion">Descubre cómo la tecnología de vanguardia puede ayudarte a apreciar y seleccionar los mejores vinos. Nuestra plataforma combina el conocimiento experto en enología con algoritmos de aprendizaje automático para ofrecerte análisis precisos y objetivos sobre la calidad de distintas variedades de vinos.
+          <br/>
+          Además, información detallada sobre los factores clave que influyen en la calidad de un vino. Aprende a identificar las características distintivas de cada vino y descubre cómo las técnicas de inteligencia artificial pueden ayudarte a detectar matices y sutilezas que pueden pasar desapercibidos para el paladar no entrenado.</p>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-4" *ngFor="let data of datas">
-        <div class="response-email">
-          <i class="email bi bi-envelope-exclamation-fill"></i>
-          <p class="mt-4"><span>Id:</span> {{ data.id }}</p>
-          <p><span>Email:</span> {{ data.user_email }}</p>
-          <p><span>Subject:</span> {{ data.subject }}</p>
-          <p><span>Message:</span> {{ data.msg }}</p>
-          <p>
-            <span>State:</span> {{ data.state ? data.state : "por responder" }}
-          </p>
-          <div class="cont-btn">
-            <button
-              type="button"
-              class="btn"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              (click)="
-                guardarCorreoTemporal(data.user_email);
-                guardarIdTemporal(data.id)
-              "
+      <div class="col-lg-12">
+        <form [formGroup]="fileForm">
+          <div class="mb-3">
+            <label for="formFile" class="cargue-archivo"
+              ><i class="bi bi-file-earmark-spreadsheet-fill"></i> Cargue
+              archivo .csv</label
             >
-              <i class="bi bi-chat-square-dots-fill"></i> Responder
-            </button>
+            <input
+              class="form-control input-file"
+              type="file"
+              id="formFile"
+              (change)="onFileSelected($event)"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-lg-12 col-upload-btn">
+        <button class="btn upload-btn" (click)="onUpload()">
+          <i class="bi bi-file-earmark-arrow-down-fill"></i> Descargar Pdf
+        </button>
+        <button class="btn upload-btn" (click)="generateReport()">
+          <i class="bi bi-file-medical-fill"></i> Ver Reporte
+        </button>
+        <div></div>
+      </div>
+      <div class="text-info" *ngIf="divVisible">
+        <div class="row">
+          <div class="col-lg-3">
+            <label>Cant. Vinos malos:</label>
+            <p>{{ badWines }}</p>
+          </div>
+          <div class="col-lg-3">
+            <label>Cant. Vinos buenos:</label>
+            <p>{{ goodWines }}</p>
+          </div>
+          <div class="col-lg-3">
+            <label>Matriz de confusión:</label>
+            <p>{{ matrixConf }}</p>
+          </div>
+          <div class="col-lg-3">
+            <label>Rendimiento general:</label>
+            <p>{{ f1Score }}</p>
+          </div>
+          <div class="col-lg-3">
+            <label>Presición:</label>
+            <p>{{ precision }}</p>
+          </div>
+          <div class="col-lg-3">
+            <label>Recal score:</label>
+            <p>{{ recalcScore }}</p>
+          </div>
+          <div class="col-lg-3">
+            <label>Rendmiento:</label>
+            <p>{{ performance }}</p>
+          </div>
+          <div class="col-lg-12">
+            <label class="v-unicos">Valores unicos:</label>
+          </div>
+          <div class="col-lg-3" *ngFor="let vals of valoresUnicos">
+            <p class="valores-unicos">{{ vals }}</p>
           </div>
         </div>
       </div>
-    </div>
-    <!-- <div class="table-responsive">
-      <table class="table align-middle">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">User Email</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Message</th>
-            <th scope="col">state</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let data of datas">
-          <tr>
-            <th scope="row">{{ data.id }}</th>
-            <td>{{ data.user_email }}</td>
-            <td>{{ data.subject }}</td>
-            <td>{{ data.msg }}</td>
-            <td>{{ data.state }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
-    <button class="btn btn-primary" (click)="onUpload()">descargar pdf</button>
-  </div>
-</div>
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="container">
-          <form [formGroup]="sendForm">
-            <div class="rowForm-response">
-              <div class="row">
-                <div class="col-lg-12">
-                  <h2>
-                    <i class="bi bi-envelope-exclamation-fill"></i> Responder
-                    Solicitud
-                  </h2>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="input-group flex-nowrap">
-                    <span class="email input-group-text" id="addon-wrapping"
-                      >@</span
-                    >
-                    <input
-                      type="text"
-                      class="email form-control"
-                      placeholder="Email"
-                      formControlName="email"
-                      readonly
-                      value="{{ recuerarCorreoTemporal() }}"
-                    />
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping"
-                      >Asunto</span
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Subject"
-                      formControlName="asunto"
-                    />
-                  </div>
-                  <div
-                    *ngIf="asunto.invalid && (asunto.dirty || asunto.touched)"
-                    class="text-danger"
-                  >
-                    <div *ngIf="asunto.errors?.['required']">
-                      Ingrese asunto.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="input-group">
-                    <span class="input-group-text">With textarea</span>
-                    <textarea
-                      class="form-control"
-                      aria-label="With textarea"
-                      placeholder="Message"
-                      formControlName="mensaje"
-                    ></textarea>
-                  </div>
-                  <div
-                    *ngIf="
-                      mensaje.invalid && (mensaje.dirty || mensaje.touched)
-                    "
-                    class="text-danger"
-                  >
-                    <div *ngIf="mensaje.errors?.['required']">
-                      Ingrese mensaje.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
+      <div class="contenedor-graphs0 mb-4" *ngIf="divVisible">
+        <h2><i class="bi bi-signpost-split-fill"></i> Arbol de desición</h2>
+        <div class="row">
+          <div class="col-lg-12 col-graphs0">
+            <img src="{{ imagen3 }}" alt="" />
+          </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-cerrar"
-          (click)="list_contact()"
-          data-bs-dismiss="modal"
-        >
-          Cancelar
-        </button>
-        <button type="button" (click)="sendContact()" class="btn btn-enviar">
-          <i class="bi bi-chat-square-dots-fill"></i> Enviar Mensaje
-        </button>
+      <div class="contenedor-graphs01 mb-4" *ngIf="divVisible">
+        <h2><i class="bi bi-bar-chart-line-fill"></i> Título info.</h2>
+        <div class="row">
+          <div class="col-lg-12 col-graphs01">
+            <img src="{{ imagen4 }}" alt="" />
+          </div>
+        </div>
       </div>
+      <div class="contenedor-graphs1 mb-4" *ngIf="divVisible">
+        <h2><i class="bi bi-pie-chart-fill"></i> Título graficos.</h2>
+        <div class="row">
+          <div class="col-lg-6 col-graphs1" *ngFor="let img1 of images1">
+            <img src="{{ img1 }}" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="contenedor-graphs1 mb-4" *ngIf="divVisible">
+        <h2><i class="bi bi-pie-chart-fill"></i> Título graficos2.</h2>
+        <div class="row">
+          <div class="col-lg-6 col-graphs1" *ngFor="let img2 of images2">
+            <img src="{{ img2 }}" alt="" />
+          </div>
+        </div>
+      </div>
+      <!-- <div *ngFor="let img2 of images2">
+      <img src="{{img2}}" alt="">
+    </div> -->
     </div>
   </div>
 </div>

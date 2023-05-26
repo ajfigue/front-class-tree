@@ -5,20 +5,15 @@
       <div class="home-content">
         <h1>Hola,</h1>
         <h3>
-          Somos <span>{{ title }}</span>
+          Bienvenido
         </h3>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque vero,
-          laudantium ducimus animi provident aut. Porro quidem inventore itaque,
-          perspiciatis sequi quo voluptas incidunt. Commodi exercitationem
-          officiis totam facere sequi. Lorem ipsum dolor, adipisicing elit. iste
-          ullam eaque. Perspiciatis sapiente aliquam optio hic vitae cumque
-          ratione, nihil amet dolor?
+          Ya has iniciado sesión, podrás disfrutar de nuestros servicios. Te ofrecemos una variedad de opciones, como calcular la hipotenusa de un triángulo rectángulo utilizando las medidas de sus catetos. También puedes explorar la calidad de los vinos a través de un práctico registro en formato .csv. ¡Y eso no es todo! También podrás responder a los mensajes de los usuarios que solicitan información.
         </p>
       </div>
       <div class="btn-box">
-        <button type="button" class="btn">Ir a ChatBot</button>
-        <button type="button" class="btn">Conocer Más</button>
+        <button routerLink="/hipotenusa" type="button" class="btn">Calcular Hipotenusa</button>
+        <button routerLink="/entradaMens" type="button" class="btn">Bandeja de Entrada</button>
         <div id="acerca_de"></div>
       </div>
     </div>
@@ -29,133 +24,50 @@
     </div>
   </div>
 </section>
-<div class="row about-us">
-  <div class="col-xs-12 col-lg-6 colImg">
-    <img src="/assets/img/estanteriaVinos.png" alt="about us" />
-  </div>
-  <div class="col-xs-12 col-lg-6">
-    <div class="text-aboutUs">
-      <h2><i class="bi bi-patch-check-fill"></i> Acerca de nosotros</h2>
-      <h3>
-        En <span>{{ title }}</span
-        >, Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro nobis
-        cum corrupti excepturi soluta sunt illo perspiciatis maiores temporibus,
-        et rerum consectetur rem, cupiditate pariatur? Nisi, sed asperiores
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid quis
-        totam consequatur.
-      </h3>
-      <button type="button" class="btn">Contactar</button>
-      <div id="servicios_id"></div>
-    </div>
-  </div>
-</div>
 <div class="row servicios">
   <div class="col-xs-12 col-lg-12 text-servicios">
-    <h2><i class="bi bi-bag-heart-fill"></i> Servicios</h2>
+    <h2><i class="bi bi-bag-heart-fill"></i> Qué deseas hacer hoy</h2>
   </div>
   <div class="col-xs-12 col-lg-12">
     <div class="list-servies">
       <div class="cartas">
         <div class="img-card">
-          <img src="/assets/img/serv1.png" alt="valoración" />
+          <img src="/assets/img/hipotenusa.png" alt="valoración" />
         </div>
-        <h3><i class="bi bi-bag-heart-fill"></i> Servicio 1</h3>
+        <h3><i class="bi bi-triangle-half"></i> Red Neuronal</h3>
         <h4>
-          Recibe tu valoración ¡totalmente gratuita! en nuestros puntos de
-          atención.
+          Calcula la hipotenusa de un triangulo rectangulo con las medidas de sus catetos.
         </h4>
-        <button type="button" class="btn">
-          <i class="bi bi-geo-alt-fill"></i> Centro más cercano
+        <button routerLink="/hipotenusa" type="button" class="btn">
+          <i class="bi bi-triangle-half"></i> Ir Red Neuronal
         </button>
       </div>
       <div class="cartas">
         <div class="img-card">
           <img src="/assets/img/serv2.png" alt="ChatBot" />
         </div>
-        <h3><i class="bi bi-chat-square-heart-fill"></i> Servicio 2</h3>
+        <h3><i class="bi bi-clipboard2-data-fill"></i> Arbol de desición</h3>
         <h4>
-          Nuestro sistema de respuesta inteligente te ayudará con tus dudas más
-          comunes.
+          Observa la calidad de vinos a través de graficas e información relevante.
         </h4>
-        <button type="button" class="btn">
-          <i class="bi bi-chat-square-heart-fill"></i> Conocer el ChatBot
+        <button routerLink="/vinoCalidad" type="button" class="btn">
+          <i class="bi bi-clipboard2-data-fill"></i> Ir Arbol de Desiciones
         </button>
       </div>
       <div class="cartas">
         <div class="img-card">
-          <img src="/assets/img/serv3.png" alt="valoración" />
+          <img src="/assets/img/mails.png" alt="valoración" />
         </div>
-        <h3><i class="bi bi-disc-fill"></i> Servicio 3</h3>
+        <h3><i class="bi bi-inbox-fill"></i> Responder Solicitud</h3>
         <h4>
-          Estudio general de Radiografía panorámica, cefalométrica y periapical
+          Responde solicitudes de contactenos enviadas por visitante de la plataforma.
         </h4>
-        <button type="button" class="btn">
-          <i class="bi bi-disc-fill"></i> Obtener cita
+        <button routerLink="/entradaMens" type="button" class="btn">
+          <i class="bi bi-inbox-fill"></i> Ver solicitudes
         </button>
         <div id="contactanos_id"></div>
       </div>
     </div>
-  </div>
-</div>
-<div class="row contactanos">
-  <div class="col-xs-12 col-lg-6">
-    <div class="row contactanos-form">
-      <div class="col-xs-12 col-lg-7 mb-3">
-        <label for="Nombre" class="form-label">Nombre</label>
-        <input
-          type="text"
-          class="form-control"
-          id="Nombre"
-          placeholder="Andrés"
-        />
-      </div>
-      <div class="col-xs-12 col-lg-5 mb-3">
-        <label for="Apellido" class="form-label">Apellido</label>
-        <input
-          type="text"
-          class="form-control"
-          id="Apellido"
-          placeholder="Medina"
-        />
-      </div>
-      <div class="col-xs-12 col-lg-4 mb-3">
-        <label for="Telefono" class="form-label">Teléfono</label>
-        <input
-          type="number"
-          class="form-control"
-          id="Telefono"
-          placeholder="3000000000"
-        />
-      </div>
-      <div class="col-xs-12 col-lg-8 mb-3">
-        <label for="correo" class="form-label">E-mail</label>
-        <input
-          type="email"
-          class="form-control"
-          id="correo"
-          placeholder="Micorreo@email.com"
-        />
-      </div>
-      <div class="col-xs-12 col-lg-12 mb-3">
-        <label for="observacion" class="form-label">Requiero:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="observacion"
-          placeholder="Información de ..."
-        />
-      </div>
-      <div class="col-xs-12 col-lg-12 boton">
-        <button type="button" class="btn">
-          <i class="bi bi-disc-fill"></i> Recibir Información
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="col-xs-12 col-lg-6 contactanosYa">
-    <h3>¿Qué esperas?</h3>
-    <h2>¡Contactanos Ya!</h2>
-    <i class="bi bi-phone-fill"></i>
   </div>
 </div>
 <app-footer></app-footer>

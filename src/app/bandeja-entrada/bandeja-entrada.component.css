@@ -1,0 +1,162 @@
+.containerAll {
+  margin: 4% auto 0;
+}
+
+.contenedor-img {
+  background-image: url("/assets/img/Mesnajes.png");
+  background-size: 100%;
+  width: 100%;
+  height: 350px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgb(0 0 0 / 20%);
+}
+
+.contenedor-img h2{
+  margin: 0;
+  font-size: 4em;
+  letter-spacing: -1px;
+  font-weight: 600;
+}
+
+.response-email {
+  font-size: 20px;
+  background: #d5bbbb;
+  padding: 15px;
+  letter-spacing: -1px;
+  border-radius: 10px;
+  border: solid 1px #ffaaaa;
+  margin: 15px 0;
+  box-shadow: 0 0 20px rgb(0 0 0 / 15%);
+}
+
+.col-actualizar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.col-actualizar p {
+  font-size: 1.7em;
+  background: #8d5d5d;
+  padding: 1px 10px;
+  margin: 0 !important;
+  border-radius: 10px;
+  color: #ffdede;
+  cursor: pointer;
+}
+
+.response-email i.email {
+  font-size: 2.3em;
+  background: #ffffff;
+  padding: 0px 14px;
+  border-radius: 20px;
+  color: #a07575;
+}
+
+.response-email .cont-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.response-email .cont-btn button {
+  margin-top: 10px;
+  background: #582a2a;
+  color: #cea3a3;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgb(0 0 0 / 20%);
+}
+
+.response-email p {
+  color: #582a2a;
+  font-weight: 500;
+}
+
+.response-email p span {
+  font-weight: 600;
+  background: #cea3a3;
+  padding: 1px 3px;
+  border-radius: 7px;
+  border: 0;
+}
+
+.modal-lg {
+  min-width: 700px;
+}
+
+.rowForm-response {
+  width: 100%;
+  min-height: 290px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.rowForm-response h2 {
+  color: #6c5b5b;
+  background: #ffc5c5;
+  padding: 3px 15px;
+  width: fit-content;
+  border-radius: 10px;
+  letter-spacing: -1.5px;
+  font-size: 2.5em;
+}
+
+.input-group span.email {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.input-group input.email {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.input-group span {
+  background: #ffc5c5;
+  border-color: #ffc5c5;
+  font-size: 1.4em;
+  color: #6c5b5b;
+}
+
+.input-group input {
+  background: #6c5b5b;
+  border-color: #6c5b5b;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
+.input-group input::placeholder {
+  color: #c0c0c0;
+}
+
+.input-group textarea {
+  height: 90px;
+  background: #6c5b5b;
+  border-color: #6c5b5b;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.2em;
+  resize: none;
+}
+
+.input-group textarea::placeholder {
+  color: #c0c0c0;
+}
+
+.btn-enviar {
+  background: #6c5b5b;
+  color: white;
+  font-weight: 500;
+}
+
+.btn-cerrar {
+  color: white;
+  background: #aa5857;
+  font-weight: 500;
+}

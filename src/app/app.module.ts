@@ -15,6 +15,7 @@ import { HipotenusaComponent } from './redneuronal/hipotenusa/hipotenusa.compone
 import { CalidadVinoComponent } from './vinos/calidad-vino/calidad-vino.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
+import { BandejaEntradaComponent } from './bandeja-entrada/bandeja-entrada.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HeaderAdminComponent } from './admin/header-admin/header-admin.componen
     HipotenusaComponent,
     CalidadVinoComponent,
     AdminComponent,
-    HeaderAdminComponent
+    HeaderAdminComponent,
+    BandejaEntradaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,150 @@
+<app-header-admin></app-header-admin>
+<div style="padding: 0 10px">
+  <div class="contenedor-img">
+    <h2><i class="bi bi-chat-square-heart-fill"></i> Bandeja Entrada</h2>
+  </div>
+</div>
+<div class="containerAll">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-actualizar">
+        <p (click)="list_contact()">
+          Actualizar <i class="bi bi-arrow-repeat"></i>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let data of datas">
+        <div class="response-email">
+          <i class="email bi bi-envelope-exclamation-fill"></i>
+          <p class="mt-4"><span>Id:</span> {{ data.id }}</p>
+          <p><span>Email:</span> {{ data.user_email }}</p>
+          <p><span>Subject:</span> {{ data.subject }}</p>
+          <p><span>Message:</span> {{ data.msg }}</p>
+          <p>
+            <span>State:</span> {{ data.state ? data.state : "por responder" }}
+          </p>
+          <div class="cont-btn">
+            <button
+              type="button"
+              class="btn"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              (click)="
+                guardarCorreoTemporal(data.user_email);
+                guardarIdTemporal(data.id)
+              "
+            >
+              <i class="bi bi-chat-square-dots-fill"></i> Responder
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container">
+          <form [formGroup]="sendForm">
+            <div class="rowForm-response">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2>
+                    <i class="bi bi-envelope-exclamation-fill"></i> Responder
+                    Solicitud
+                  </h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="input-group flex-nowrap">
+                    <span class="email input-group-text" id="addon-wrapping"
+                      ><i class="bi bi-person-vcard-fill"></i
+                    ></span>
+                    <input
+                      type="text"
+                      class="email form-control"
+                      placeholder="Email"
+                      formControlName="email"
+                      readonly
+                      value="{{ recuerarCorreoTemporal() }}"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping"
+                      ><i class="bi bi-type"></i
+                    ></span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Asunto"
+                      formControlName="asunto"
+                    />
+                  </div>
+                  <div
+                    *ngIf="asunto.invalid && (asunto.dirty || asunto.touched)"
+                    class="text-danger"
+                  >
+                    <div *ngIf="asunto.errors?.['required']">
+                      Ingrese asunto.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="input-group">
+                    <span class="input-group-text"
+                      ><i class="bi bi-chat-left-text-fill"></i
+                    ></span>
+                    <textarea
+                      class="form-control"
+                      aria-label="With textarea"
+                      placeholder="Mensaje"
+                      formControlName="mensaje"
+                    ></textarea>
+                  </div>
+                  <div
+                    *ngIf="
+                      mensaje.invalid && (mensaje.dirty || mensaje.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="mensaje.errors?.['required']">
+                      Ingrese mensaje.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-cerrar"
+          (click)="list_contact()"
+          data-bs-dismiss="modal"
+        >
+          Cancelar
+        </button>
+        <button type="button" (click)="sendContact()" class="btn btn-enviar">
+          <i class="bi bi-chat-square-dots-fill"></i> Enviar Mensaje
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
